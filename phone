@@ -1,0 +1,14 @@
+	if [ $# -eq 0 ]
+	then 
+		echo "Usage : phone searchfor [... searchfor]
+	(You didn't tellm e what you want to search for.)"
+
+	else
+		sub="$1"
+		for i in $@
+		do 
+			sub="${sub}|${i}"
+		done
+
+		egrep -i "$sub" mydata.txt | awk -f display.awk
+	fi
